@@ -7,11 +7,15 @@ from PyQt5.QtGui import QPainter, QColor
 
 from random import randint
 
+from UI import Ui_MainWindow
 
-class MyWidget(QMainWindow):
+
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)  # Загружаем дизайн
+        # Вызываем метод для загрузки интерфейса из класса Ui_MainWindow,
+        # остальное без изменений
+        self.setupUi(self)
 
         self.connects()
 
@@ -29,9 +33,7 @@ class MyWidget(QMainWindow):
 
     def draw(self, qp):
         # Задаем кисть
-        qp.setBrush(QColor(255, 0, 0))
-        # Рисуем прямоугольник заданной кистью
-        qp.setBrush(QColor('yellow'))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
 
         def get_args_for_ellipse():
             x1, y1 = randint(50, 300), randint(100, 300)
