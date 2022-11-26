@@ -52,4 +52,4 @@ if __name__ == '__main__':
     ex = MyWidget()
     ex.show()
     sys.excepthook = except_hook
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
